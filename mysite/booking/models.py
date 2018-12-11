@@ -3,6 +3,7 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from django.utils.dateformat import format
 
+
 # Create your models here.
 class Person(models.Model):
     name = models.CharField(max_length=50, db_index=True)
@@ -13,6 +14,7 @@ class Person(models.Model):
 
     def __str__(self):
         return '{}: {}'.format(self.name, self.contact)
+
 
 class Booking(models.Model):
     person = models.ForeignKey(Person, on_delete=models.CASCADE)
