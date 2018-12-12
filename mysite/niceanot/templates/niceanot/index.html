@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+{% load util %}
+{% block header-title %}{% get_site_title %}{% endblock %}
+{% block body %}
+
+	<br/>
+	<!-- Messages -->
+	{% include "messages.html" %}
+
+	<!-- Masthead -->
+	<div class="container text-center">
+		<div class="row">
+			<div class="col-12 mx-auto">
+				<h1 class="mb-3">Eh this one nice a not?</h1>
+			</div>
+			<div class="col-md-12 col-lg-9 col-xl-8 mx-auto">
+				<form method = "POST">
+				  {% csrf_token %}
+				  <div class="form-row">
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text">Number Of Sentences: </span>
+							</div><!-- /input-group-prepend -->
+							<input type="number" class="form-control form-control-lg" name="num_of_sentences" min="1" max="10" value="{{num_of_sentences}}">
+							<div class="input-group-append">
+								<button type="submit" class="btn btn-block btn-lg btn-primary">Generate</button>
+							</div>
+						</div><!-- /input-group -->
+				  </div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<br/>
+
+	{% if request.method == 'POST' %}
+	<!-- Tabs -->
+	<div class="container text-center">
+		<blockquote class="blockquote">
+		  <p class="text-primary mb-0">{{result}}</p>
+		  <footer class="blockquote-footer">Eh Nice A Not</footer>
+		</blockquote>
+	</div>
+	{% endif %}
+
+{% endblock %}

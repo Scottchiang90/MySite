@@ -18,5 +18,9 @@ from django.urls import include, path
 
 urlpatterns = [
     path('booking/', include('booking.urls')),
-    path('', admin.site.urls),
+    path('admin/', admin.site.urls),
+    path('', include('niceanot.urls')),
 ]
+
+admin.site.site_title = "My Site"
+admin.site.site_header = "My Site Administration"

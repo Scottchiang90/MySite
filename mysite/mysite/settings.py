@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'niceanot.apps.NiceanotConfig',
     'booking.apps.BookingConfig',
     'phonenumber_field',
 ]
@@ -58,7 +59,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['./templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,6 +125,9 @@ PHONENUMBER_DEFAULT_REGION = 'SG'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Session
+SESSION_COOKIE_AGE = 1200  # in seconds
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
