@@ -1,0 +1,1 @@
+UNDISPLAY_APPRAISAL_FIELDS = ['id', 'id_num', 'customer', 'appraiser', 'created_by', 'created_on', 'updated_by', 'updated_on', 'photo', 'remarks']

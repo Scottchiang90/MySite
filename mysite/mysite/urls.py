@@ -15,12 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path('booking/', include('booking.urls')),
+#    path('booking/', include('booking.urls')),
     path('admin/', admin.site.urls),
-    path('', include('niceanot.urls')),
-]
+#    path('niceanot/', include('niceanot.urls')),
+    path('banknote/', include('banknote.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.site.site_title = "My Site"
 admin.site.site_header = "My Site Administration"

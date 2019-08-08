@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'niceanot.apps.NiceanotConfig',
-    'booking.apps.BookingConfig',
+    'banknote',
     'phonenumber_field',
 ]
 
@@ -131,3 +131,7 @@ SESSION_COOKIE_AGE = 1200  # in seconds
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+# Media Path
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'banknote/media/')

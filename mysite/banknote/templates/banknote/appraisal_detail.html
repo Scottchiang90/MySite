@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% load banknote_tags %}
+{% block header-title %}Appraisal detail{% endblock %}
+{% block body %}
+<div class="container">
+
+    <br/><br/>
+
+    <div class="container text-center">
+        <div class="col-12 mx-auto">
+            <h1 class="mb-3">Appraisal detail</h1>
+        </div>
+    </div>
+
+    <div class="card text-white bg-secondary mb-3">
+        <div class="card-header">{{appraisal.id_num}}</div>
+
+        <div class="card-body">
+            {% for field_name in field_names %}
+                {% if forloop.counter|is_odd %}
+                <div class="form-group row">{% endif %}
+                    <label class="col-sm-2 col-form-label" for="{{field_name}}">{% get_field_label object field_name %}</label>
+                    <div class="col-sm-4">
+                        <input class="form-control white-bg" id="{{field_name}}" type="text"
+                               value="{% get_field_value object field_name %}" readonly="">
+                    </div>
+                    {% if forloop.counter|is_odd is not True %}
+                </div>
+                {% elif forloop.last %}
+                </div>
+                {% endif %}
+            {% endfor %}
+            <div class="form-group">
+              <label class="col-form-label" for="exampleTextarea">{% get_field_label object 'remarks' %}</label>
+              <textarea class="form-control" id="exampleTextarea" rows="4" readonly="">{{appraisal.remarks}}</textarea>
+            </div>
+            {% if appraisal.photo %}
+            <div class="form-group">
+                <img src="{{ appraisal.photo.url }}" class="img-thumbnail" alt="Note Image">
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
+
+{% block additionalStyle %}
+<style>
+    .form-control[readonly] {
+        background-color: #EBEBEB;
+    }
+</style>
+{% endblock %}
